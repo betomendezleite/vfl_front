@@ -30,6 +30,9 @@ export default function TicketCheckout() {
   const [tables, setTables] = useState([]);
   const [selectedTable, setSelectedTable] = useState(null);
 
+  const selectedMesa = tables.find((t) => t.id === selectedTable);
+  const totalMesa = selectedMesa ? selectedMesa.capacity * PRICE : 0;
+
   // feedback
   const [errors, setErrors] = useState([]);
   const [success, setSuccess] = useState("");
@@ -47,6 +50,25 @@ export default function TicketCheckout() {
       return next;
     });
   }, [meiaCount]);
+
+  useEffect(() => {
+    async function fetchTables() {
+      try {
+        const resAlta = await fetch(
+          "http://localhost:3100/bistros/planta-alta"
+        );
+        const resBaixa = await fetch(
+          "http://localhost:3100/bistros/planta-baixa"
+        );
+        const alta = await resAlta.json();
+        const baixa = await resBaixa.json();
+        setTables([...alta, ...baixa]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchTables();
+  }, []);
 
   useEffect(() => {
     if (meiaCount > quantity) setMeiaCount(quantity);
@@ -440,33 +462,18 @@ export default function TicketCheckout() {
                     <img src="/planta-baixa-2.jpg" alt="planta baixa 2" />
                   </div>
                 </div>
-                <BtnBistros />
+                <BtnBistros
+                  tables={tables}
+                  selectedTableId={selectedTable}
+                  onSelect={(id) => setSelectedTable(id)}
+                />
 
-                <div className="tc-tables-grid">
-                  {plantaAlta.map((t) => (
-                    <button
-                      key={t.id}
-                      type="button"
-                      disabled={t.status !== "available"}
-                      className={`tc-table-btn ${
-                        selectedTable === t.id ? "selected" : ""
-                      } ${t.status}`}
-                      onClick={() => setSelectedTable(t.id)}
-                    >
-                      {t.name} ({t.capacity})
-                    </button>
-                  ))}
-                </div>
+                
 
                 {selectedTable && (
                   <p className="tc-total" style={{ marginTop: 12 }}>
-                    Mesa escolhida:{" "}
-                    {tables.find((x) => x.id === selectedTable)?.name} — Total:
-                    R${" "}
-                    {(
-                      tables.find((x) => x.id === selectedTable)?.capacity *
-                      PRICE
-                    ).toFixed(2)}
+                    Mesa escolhida: {selectedMesa?.name} — Total: R${" "}
+                    {totalMesa.toFixed(2)}
                   </p>
                 )}
               </div>
@@ -477,6 +484,7 @@ export default function TicketCheckout() {
                   className="tc-buy"
                   type="submit"
                   disabled={!selectedTable}
+                  onClick={handleBuy}
                 >
                   Comprar Bistrô
                 </button>
