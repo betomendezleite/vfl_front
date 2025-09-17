@@ -6,6 +6,8 @@ import BtnBistros from "./utils/btnBistros";
 import BuyerForm from "./utils/BuyerForm";
 
 export default function TicketCheckout() {
+  const API_BASE = process.env.NEXT_PUBLIC_URL_API_BASE;
+
   const PRICE = 200;
   const HALF = 0.5;
 
@@ -54,12 +56,8 @@ export default function TicketCheckout() {
   useEffect(() => {
     async function fetchTables() {
       try {
-        const resAlta = await fetch(
-          "http://localhost:3100/bistros/planta-alta"
-        );
-        const resBaixa = await fetch(
-          "http://localhost:3100/bistros/planta-baixa"
-        );
+        const resAlta = await fetch(`${API_BASE}/bistros/planta-alta`);
+        const resBaixa = await fetch(`${API_BASE}/bistros/planta-baixa`);
         const alta = await resAlta.json();
         const baixa = await resBaixa.json();
         setTables([...alta, ...baixa]);
@@ -145,7 +143,7 @@ export default function TicketCheckout() {
 
     try {
       console.log(payload);
-      const res = await fetch("http://localhost:3100/pedidos", {
+      const res = await fetch(`${API_BASE}/pedidos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -156,20 +154,12 @@ export default function TicketCheckout() {
         throw new Error(errorData.error || "Erro ao registrar pedido");
       }
 
-      const data = await res.json(); // 👈 aquí parseas el JSON
-
+      const data = await res.json();
       console.log("Respuesta del backend:", data);
 
-      // ejemplo: redirigir a Mercado Pago
       if (data.mpLink) {
         window.location.href = data.mpLink;
       }
-      /*      
-
-
-
-      const data = await res.json();
-      setSuccess("Pedido registrado com sucesso! Código: " + data.order.id); */
     } catch (err) {
       console.log(err.message);
       setErrors([err.message]);
@@ -467,8 +457,6 @@ export default function TicketCheckout() {
                   selectedTableId={selectedTable}
                   onSelect={(id) => setSelectedTable(id)}
                 />
-
-                
 
                 {selectedTable && (
                   <p className="tc-total" style={{ marginTop: 12 }}>
