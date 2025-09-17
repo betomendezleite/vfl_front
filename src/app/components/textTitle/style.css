@@ -1,0 +1,26 @@
+.titleWrapper {
+  position: relative;
+  display: inline-block; /* ajusta al tamaño del texto */
+}
+
+.titleInferior {
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff;
+  font-family: "Dela Gothic One";
+  font-size: 64px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.titleSuperior {
+  color: #ebc167;
+  font-family: "Dela Gothic One";
+  font-size: 32px;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

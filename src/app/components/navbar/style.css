@@ -1,0 +1,37 @@
+.contentNavbar {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.LogoBox {
+  display: flex;
+  width: 90px;
+  height: 70px;
+  padding: 10px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  background: #272727;
+}
+.LogoBox img {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  width: 398px;
+  height: 40px;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: rgba(39, 39, 39, 0.75);
+  backdrop-filter: blur(5px);
+  color: #ebc167;
+  font-size: 12px;
+  margin: 20px;
+}

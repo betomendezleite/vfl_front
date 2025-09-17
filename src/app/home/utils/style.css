@@ -1,0 +1,41 @@
+.boxDataCountTitle {
+  color: #fff;
+  font-family: "Dela Gothic One";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: #272727;
+  width: 420px;
+  padding: 10px;
+
+  gap: 10px;
+  align-self: stretch;
+}
+
+.countBoxData {
+  width: 250px;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 19px;
+  border-radius: 20px;
+  background: linear-gradient(0deg, #272727 0%, #272727 100%), #fff;
+  color: white;
+  margin-left: 40px;
+  margin-top: 60px;
+}
+.countBoxData div :nth-child(1) {
+  font-size: 16px;
+  text-align: center;
+}
+
+.countBoxData div :nth-child(2) {
+  font-size: 8px;
+}
+.logoTributo{
+    width: 100%;
+    max-width: 350px;
+    margin-left: 15%;
+}

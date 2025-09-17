@@ -1,0 +1,27 @@
+.containerBtn {
+  padding: 10px;
+}
+
+.bistroGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.btnData {
+  color: black;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 20px;
+  border: 1px solid #232323;
+  width: 120px;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btnData div:nth-child(2) {
+  font-size: 10px;
+}
