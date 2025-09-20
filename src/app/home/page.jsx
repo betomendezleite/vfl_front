@@ -34,7 +34,7 @@ export default function HomePage() {
             />
             <a
               className="btnReserva"
-              href="https://vflmusic.com.br/eventos/tributo-de-la-cumbia/tickets"
+              href="https://vflmusic.com.br/eventos/tributo-de-la-cumbia/"
               target="_blank"
               rel="noopener noreferrer"
             >
