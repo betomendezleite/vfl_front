@@ -32,7 +32,14 @@ export default function HomePage() {
               alt=""
               srcset=""
             />
-            <div className="btnReserva">COMPRAR TICKET</div>
+            <a
+              className="btnReserva"
+              href="https://vflmusic.com.br/eventos/tributo-de-la-cumbia/tickets"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              COMPRAR TICKET
+            </a>
           </div>
         </div>
       </div>
