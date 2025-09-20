@@ -49,15 +49,27 @@ export default function HomePage() {
           <img width={"100%"} src="img/rasgado_sup.svg" alt="" />
         </div>
         <div className="wrapperIcons">
-          <div>
-            <img src="img/tiktok.svg" alt="" srcset="" />
-          </div>
-          <div>
-            <img src="img/instagram.svg" alt="" srcset="" />
-          </div>
-          <div>
-            <img src="img/facebook.svg" alt="" srcset="" />
-          </div>
+          <a
+            href="https://www.tiktok.com/@vflmusicshowtime"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="img/tiktok.svg" alt="TikTok" />
+          </a>
+          <a
+            href="https://www.instagram.com/vflmusicshowtime"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="img/instagram.svg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.facebook.com/vflmusicshowtime"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="img/facebook.svg" alt="Facebook" />
+          </a>
         </div>
         <div>
           <img width={"100%"} src="img/rasgado_inf.svg" alt="" />
