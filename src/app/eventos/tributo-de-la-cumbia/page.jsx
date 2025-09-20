@@ -8,7 +8,7 @@ import BuyerForm from "./utils/BuyerForm";
 export default function TicketCheckout() {
   const API_BASE = process.env.NEXT_PUBLIC_URL_API_BASE;
 
-  const PRICE = 200;
+  const PRICE = 1;
   const HALF = 0.5;
 
   const [tab, setTab] = useState("ingresso");
