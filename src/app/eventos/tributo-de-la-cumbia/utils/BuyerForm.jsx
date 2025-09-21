@@ -5,9 +5,7 @@ export default function BuyerForm({ buyer, setBuyer }) {
   return (
     <div className="tc-panel">
       <h3>Cadastro do comprador (nominal)</h3>
-      <p className="tc-small">
-        Os tickets serão enviados por e-mail informado abaixo.
-      </p>
+
 
       <div className="tc-grid">
         <input

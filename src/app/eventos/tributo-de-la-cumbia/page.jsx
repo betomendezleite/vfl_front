@@ -136,7 +136,10 @@ export default function TicketCheckout() {
             plantaAlta.find((t) => t.id === selectedTable)?.area
           : selectedArea,
       bistroTableId: tab === "bistrot" ? selectedTable : null,
-      total: totalIngressos.toFixed(2),
+      total:
+        tab === "bistrot"
+          ? totalMesa.toFixed(2) // ✅ Usa el total de la mesa
+          : totalIngressos.toFixed(2), // ✅ Usa el total de ingressos
       meiaCount: meiaCount,
       meiaPeople: meiaPeople,
     };
@@ -208,8 +211,7 @@ export default function TicketCheckout() {
             /* ---- INGRESSOS ---- */
             <section>
               <div className="tc-map-images">
-                <img src="/planta-alta-1.jpg" alt="planta alta 1" />
-                <img src="/planta-alta-1.jpg" alt="planta alta 1" />
+                <img src="/img/ingresos.jpg" alt="planta alta 1" />
               </div>
               <div className="tc-row">
                 <div className="tc-col">
@@ -421,23 +423,6 @@ export default function TicketCheckout() {
               </div>
 
               {/* --- mapas --- */}
-              <div className="tc-maps">
-                <div className="tc-map">
-                  <p className="tc-map-title">Planta Baixa</p>
-                  <div className="tc-map-images">
-                    <img src="/planta-baixa-1.jpg" alt="planta baixa 1" />
-                    <img src="/planta-baixa-2.jpg" alt="planta baixa 2" />
-                  </div>
-                </div>
-
-                <div className="tc-map">
-                  <p className="tc-map-title">Planta Alta</p>
-                  <div className="tc-map-images">
-                    <img src="/planta-alta-1.jpg" alt="planta alta 1" />
-                    <img src="/planta-alta-2.jpg" alt="planta alta 2" />
-                  </div>
-                </div>
-              </div>
             </section>
           ) : (
             /* ---- BISTRÔ ---- */
@@ -448,8 +433,14 @@ export default function TicketCheckout() {
                 <div className="tc-map">
                   <p className="tc-map-title">Planta Baixa</p>
                   <div className="tc-map-images">
-                    <img src="/planta-baixa-1.jpg" alt="planta baixa 1" />
-                    <img src="/planta-baixa-2.jpg" alt="planta baixa 2" />
+                    <img
+                      src="../../../img/planta_alta.jpg"
+                      alt="planta baixa 1"
+                    />
+                    <img
+                      src="../../../img/planta_baja.jpg"
+                      alt="planta baixa 2"
+                    />
                   </div>
                 </div>
                 <BtnBistros
@@ -482,8 +473,8 @@ export default function TicketCheckout() {
         </form>
 
         <p className="tc-foot">
-          Observação: frontend de demonstração — integre com backend para
-          pagamentos e emissão de tickets.
+          Observação: Os pagamentos serão feitos pela plataforma do Mercado
+          Pago.
         </p>
       </div>
     </div>

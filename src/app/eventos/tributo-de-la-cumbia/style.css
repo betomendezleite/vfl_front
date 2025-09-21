@@ -194,8 +194,8 @@ body {
   gap: 8px;
 }
 .tc-map-images img {
-  width: 50%;
-  height: 140px;
+  width: 100%;
+  max-width: 250px;
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid #ddd;
