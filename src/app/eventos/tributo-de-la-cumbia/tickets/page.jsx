@@ -2,6 +2,7 @@
 import { useState } from "react";
 import jsPDF from "jspdf";
 import QRCode from "qrcode";
+import "./style.css";
 
 export default function TicketsPage() {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export default function TicketsPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:3100/api/tickets", {
+      const res = await fetch( `${process.env.NEXT_PUBLIC_URL_API_BASE}/api/tickets`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, cpf }),
@@ -65,15 +66,13 @@ export default function TicketsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#262626] text-white flex flex-col items-center justify-center p-6">
-      <h1 className="text-2xl font-bold mb-6">
-        Verifica y descarga tus boletos
-      </h1>
-
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-sm"
-      >
+    <div className="bodyContent">
+      <div>
+        {" "}
+        <img className="logoTributo" src="../../../img/logo_tributo.png" alt="" />
+      </div>
+      <h3 className="txtTitle">Verifica y descarga tus boletos</h3>
+      <form onSubmit={handleSubmit} className="formContent">
         <input
           type="email"
           placeholder="Email"
@@ -90,10 +89,7 @@ export default function TicketsPage() {
           onChange={(e) => setCpf(e.target.value)}
         />
 
-        <button
-          type="submit"
-          className="p-2 border border-white rounded hover:bg-white hover:text-black transition"
-        >
+        <button type="submit" className="btnReserva">
           Buscar boletos
         </button>
       </form>
@@ -102,20 +98,14 @@ export default function TicketsPage() {
 
       <div className="mt-8 flex flex-col gap-4">
         {tickets.map((ticket) => (
-          <div
-            key={ticket.id}
-            className="border border-white p-4 rounded w-[400px] flex justify-between items-center"
-          >
+          <div key={ticket.id} className="btnDowsWrapper">
             <div>
               <p className="font-bold">{ticket.evento}</p>
               <p>{ticket.nombre}</p>
               <p className="text-sm text-gray-300">{ticket.email}</p>
             </div>
-            <button
-              onClick={() => downloadPDF(ticket)}
-              className="border border-white px-3 py-1 rounded hover:bg-white hover:text-black transition"
-            >
-              Descargar PDF
+            <button onClick={() => downloadPDF(ticket)} className="btnPdfDown">
+              Descargar Ticket - PDF
             </button>
           </div>
         ))}

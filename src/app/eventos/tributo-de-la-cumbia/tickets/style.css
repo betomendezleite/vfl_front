@@ -1,0 +1,60 @@
+.bodyContent {
+  background: url("../../../../../public/img/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 20px;
+}
+.btnReserva {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  background: #ebc167;
+  font-size: 10px;
+  cursor: pointer;
+}
+.formContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.formContent input {
+    height: 30px;
+}
+
+.btnPdfDown{
+    padding: 8px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+
+.btnDowsWrapper{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.logoTributo{
+    width: 100%;
+    max-width: 150px;
+    margin-left: 0 auto;
+    margin-top: 40px;
+}
