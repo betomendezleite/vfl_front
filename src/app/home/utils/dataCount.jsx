@@ -43,7 +43,7 @@ export default function DataCountComponent() {
     <div style={{ display: "flex" }}>
       <div>
         <div className="boxDataCountTitle">
-          <div>BAILA SAO PAULO</div>
+          <div>BAILA SÃO PAULO</div>
           <div>BAILA CUMBIA</div>
         </div>
         <div className="countBoxData">

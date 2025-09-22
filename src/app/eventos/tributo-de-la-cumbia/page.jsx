@@ -58,13 +58,31 @@ export default function TicketCheckout() {
       try {
         const resAlta = await fetch(`${API_BASE}/bistros/planta-alta`);
         const resBaixa = await fetch(`${API_BASE}/bistros/planta-baixa`);
+
         const alta = await resAlta.json();
         const baixa = await resBaixa.json();
-        setTables([...alta, ...baixa]);
+
+        // 🔥 Filtrar en el front
+        const now = new Date();
+        const filtrar = (mesas) =>
+          mesas.filter((mesa) => {
+            if (mesa.status === "available") return true;
+
+            if (mesa.status === "pending" && mesa.updatedAt) {
+              const updated = new Date(mesa.updatedAt);
+              const diffMin = (now - updated) / 1000 / 60; // diferencia en minutos
+              return diffMin > 20; // solo mostrar si ya pasaron +2 minutos
+            }
+
+            return false;
+          });
+
+        setTables([...filtrar(alta), ...filtrar(baixa)]);
       } catch (err) {
         console.error(err);
       }
     }
+
     fetchTables();
   }, []);
 
